@@ -1,0 +1,112 @@
+/* ============================================================
+   RESPONSIVE.CSS
+   ------------------------------------------------------------
+   Responsibility:
+   - All breakpoint-specific overrides for layout, typography,
+     spacing, and the neuron canvas sizing.
+   - Mobile-first overrides layered on top of style.css defaults.
+
+   STAGE 3 NOTE:
+   This is the RESPONSIVE FOUNDATION only — baseline token
+   adjustments (spacing scale, section rhythm, background glow
+   size) per breakpoint, so the design system degrades sensibly
+   right away. It does NOT yet contain section-specific layout
+   restructuring (hero grid stacking, project grid columns,
+   nav collapsing to a hamburger, etc.) — that full responsive
+   layout work happens in Stage 13 (Responsive Refinement) once
+   each section's markup/composition exists.
+
+   Breakpoint scale:
+   - Mobile:        up to 767px
+   - Tablet:        768px  - 991px
+   - Laptop:        992px  - 1199px
+   - Desktop:        1200px - 1439px
+   - Large Desktop:  1440px and up
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Mobile (base — style.css tokens are already mobile-safe via
+   clamp(); this tightens rhythm/section spacing specifically)
+   ------------------------------------------------------------ */
+@media (max-width: 767px) {
+  :root {
+    --section-spacing: var(--space-8);
+    --section-spacing-sm: var(--space-6);
+    --grid-gap: var(--space-3);
+  }
+
+  main section {
+    padding-block: var(--space-6);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-4);
+  }
+
+  /* Background glows are pulled in tighter and dimmed slightly
+     so they don't overwhelm a narrow, content-dense viewport. */
+  body {
+    background-image:
+      radial-gradient(
+        ellipse 90% 40% at 30% 8%,
+        var(--glow-ambient-violet) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 80% 35% at 80% 12%,
+        var(--glow-ambient-cyan) 0%,
+        transparent 55%
+      );
+  }
+}
+
+/* ------------------------------------------------------------
+   Tablet
+   ------------------------------------------------------------ */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --section-spacing: var(--space-12);
+    --section-spacing-sm: var(--space-8);
+  }
+}
+
+/* ------------------------------------------------------------
+   Laptop
+   ------------------------------------------------------------ */
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Tokens already scale smoothly via clamp(); no overrides
+     needed yet at this tier. Reserved for Stage 13. */
+}
+
+/* ------------------------------------------------------------
+   Desktop
+   ------------------------------------------------------------ */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  /* Reserved for Stage 13. */
+}
+
+/* ------------------------------------------------------------
+   Large Desktop
+   ------------------------------------------------------------ */
+@media (min-width: 1440px) {
+  :root {
+    /* Let the max content width breathe slightly more on very
+       large viewports without letting text lines over-extend. */
+    --max-width: 1360px;
+  }
+}
+
+/* ------------------------------------------------------------
+   Reduced Motion (accessibility — not a size breakpoint,
+   kept here since it also gates responsive/behavioral choices)
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  * ,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
