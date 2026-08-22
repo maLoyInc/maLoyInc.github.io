@@ -1,0 +1,46 @@
+/* ============================================================
+   ANIMATIONS.CSS
+   ------------------------------------------------------------
+   Responsibility:
+   - CSS @keyframes definitions (fade, slide, reveal, pulse, etc.)
+   - Reusable animation/transition utility classes
+   - Hover/focus transition helpers
+   - Reduced-motion-safe animation gating (paired with
+     responsive.css's prefers-reduced-motion block)
+
+   STAGE 3 NOTE (Design System):
+   Shared motion TOKENS (easing curve, fast/base durations) were
+   defined in css/style.css :root as part of the design system,
+   since they're design decisions, not animation implementation.
+   This file still has no @keyframes or reveal logic — that is
+   filled in during Stage 12 (Animation Refinement), with
+   lightweight entries added incrementally as each section is
+   built (e.g. reveal classes used by js/animations.js), reusing
+   --ease-standard / --duration-fast / --duration-base from
+   style.css for consistency.
+
+   The 3D neuron's animation logic (float, breathe, pulse,
+   energy travel) lives in js/neuron.js, NOT here — this file
+   is for DOM/CSS-driven animation only.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Keyframes (placeholder — to be implemented later)
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   Reveal / scroll-triggered utility classes
+   (used in tandem with IntersectionObserver logic
+   in js/animations.js)
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   Hover / focus transition helpers
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   Load-sequence animation classes (hero intro, etc.)
+   ------------------------------------------------------------ */
