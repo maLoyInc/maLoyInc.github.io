@@ -1,417 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuwen — Portfolio</title>
-<meta name="description" content="Yuwen — building agents, automation, and a game I keep saying I'll finish.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #121110;
-    --surface: #1b1917;
-    --surface-2: #221f1c;
-    --line: #34302a;
-    --text: #efe9df;
-    --muted: #948c7c;
-    --accent: #e8a33d;
-    --accent-dim: #6b5228;
-    --dot-red: #e5695a;
-    --dot-yellow: #e8c04d;
-    --dot-green: #7fb87a;
-    --radius: 10px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[PLACEHOLDER_NAME] — Creative Developer Portfolio</title>
+  <meta name="description" content="[PLACEHOLDER_DESCRIPTION]" />
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
+  <!--
+    STAGE 2 NOTE:
+    This file is the structural skeleton only.
+    No visual design, no real content, no animation logic yet.
+    Sections are marked with comments describing their future responsibility.
+  -->
 
-  body{
-    margin:0;
-    background: var(--bg);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(239,233,223,0.045) 1px, transparent 0);
-    background-size: 26px 26px;
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+  <!-- Favicon (placeholder path, add real icon in assets/icons/ later) -->
+  <link rel="icon" href="./assets/icons/favicon.ico" />
 
-  ::selection{ background: var(--accent); color: #1b1917; }
+  <!--
+    STAGE 3 ADDITION:
+    Typography — design system typefaces (see css/style.css :root
+    for the full type scale). Space Grotesk = display/headings,
+    Inter = body/UI text, Space Mono = section labels & nav eyebrows
+    (a small "developer" signature detail).
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
-  a{ color: inherit; }
-
-  .wrap{
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- Nav ---------- */
-  nav{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: 28px 0;
-  }
-  .brand{
-    font-family:'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.02em;
-  }
-  .brand .dot{ color: var(--accent); }
-  nav .links{
-    display:flex;
-    gap: 22px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-  }
-  nav .links a{ text-decoration:none; transition: color .15s ease; }
-  nav .links a:hover{ color: var(--accent); }
-
-  /* ---------- Hero ---------- */
-  header.hero{
-    padding: 72px 0 88px;
-  }
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--accent);
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    margin-bottom: 22px;
-  }
-  .eyebrow::before{
-    content:"";
-    width: 8px; height:8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--accent-dim);
-  }
-
-  h1.headline{
-    font-family:'JetBrains Mono', monospace;
-    font-weight: 800;
-    font-size: clamp(38px, 6.4vw, 64px);
-    line-height: 1.08;
-    margin: 0 0 22px;
-    letter-spacing: -0.01em;
-  }
-  h1.headline .cursor{
-    display:inline-block;
-    width: 0.52em;
-    height: 0.86em;
-    background: var(--accent);
-    margin-left: 6px;
-    transform: translateY(0.09em);
-    animation: blink 1.05s steps(1) infinite;
-  }
-  @keyframes blink{ 50%{ opacity: 0; } }
-
-  p.lede{
-    font-size: 18px;
-    line-height: 1.65;
-    color: #cfc7b8;
-    max-width: 560px;
-    margin: 0 0 34px;
-  }
-  p.lede b{ color: var(--text); font-weight: 600; }
-
-  .stack-row{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 38px;
-  }
-  .chip{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    color: var(--muted);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    padding: 7px 12px;
-    border-radius: 999px;
-  }
-
-  .cta-row{
-    display:flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .btn{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13.5px;
-    text-decoration:none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    border: 1px solid var(--line);
-    display:inline-flex;
-    align-items:center;
-    gap: 8px;
-    transition: transform .15s ease, border-color .15s ease, background .15s ease;
-  }
-  .btn:hover{ transform: translateY(-2px); border-color: var(--accent); }
-  .btn.primary{
-    background: var(--accent);
-    color: #1b1917;
-    border-color: var(--accent);
-    font-weight: 600;
-  }
-  .btn.primary:hover{ background: #f3b654; }
-
-  /* ---------- Section headers ---------- */
-  .section-title{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin: 0 0 26px;
-    display:flex;
-    align-items:center;
-    gap: 12px;
-  }
-  .section-title::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background: var(--line);
-  }
-
-  section{ padding: 20px 0 64px; }
-
-  /* ---------- Terminal window project cards ---------- */
-  .projects{
-    display:flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-  .term{
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: border-color .18s ease, transform .18s ease;
-  }
-  .term:hover{ border-color: #4a4438; transform: translateY(-2px); }
-
-  .term-bar{
-    display:flex;
-    align-items:center;
-    gap: 8px;
-    padding: 11px 14px;
-    background: var(--surface-2);
-    border-bottom: 1px solid var(--line);
-  }
-  .term-bar .dot{ width:10px; height:10px; border-radius:50%; }
-  .term-bar .dot.red{ background: var(--dot-red); }
-  .term-bar .dot.yellow{ background: var(--dot-yellow); }
-  .term-bar .dot.green{ background: var(--dot-green); }
-  .term-bar .path{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    margin-left: 8px;
-  }
-  .term-bar .status{
-    margin-left: auto;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    color: var(--muted);
-  }
-  .term-bar .status.live{ color: var(--dot-green); border-color: #2f4a2f; }
-  .term-bar .status.wip{ color: var(--accent); border-color: var(--accent-dim); }
-
-  .term-body{ padding: 22px 22px 24px; }
-  .term-body h3{
-    margin: 0 0 8px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 19px;
-  }
-  .term-body h3 .prompt{ color: var(--accent); margin-right: 8px; }
-  .term-body p{
-    margin: 0 0 16px;
-    color: #cfc7b8;
-    line-height: 1.6;
-    font-size: 14.5px;
-    max-width: 620px;
-  }
-  .term-tags{
-    display:flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
-  }
-  .term-tags span{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .term-tags span::before{ content: "#"; color: var(--accent-dim); }
-
-  .term-link{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    text-decoration:none;
-    color: var(--accent);
-    display:inline-flex;
-    align-items:center;
-    gap: 6px;
-  }
-  .term-link:hover{ text-decoration: underline; }
-
-  /* ---------- Now / about ---------- */
-  .now-list{
-    list-style:none;
-    margin:0; padding:0;
-    display:flex;
-    flex-direction:column;
-    gap: 14px;
-  }
-  .now-list li{
-    display:flex;
-    gap: 14px;
-    font-size: 15px;
-    color: #cfc7b8;
-    line-height: 1.6;
-  }
-  .now-list li::before{
-    content: "›";
-    color: var(--accent);
-    font-family:'JetBrains Mono', monospace;
-    font-weight: 700;
-  }
-
-  /* ---------- Footer ---------- */
-  footer{
-    border-top: 1px solid var(--line);
-    padding: 28px 0 40px;
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
-  footer a{ text-decoration:none; color: var(--muted); }
-  footer a:hover{ color: var(--accent); }
-
-  @media (max-width: 560px){
-    nav .links{ display:none; }
-    header.hero{ padding: 48px 0 60px; }
-    .term-body{ padding: 18px 16px 20px; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    h1.headline .cursor{ animation: none; }
-  }
-</style>
+  <!-- Stylesheets: order matters (base -> responsive -> animations) -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
 </head>
 <body>
 
-<div class="wrap">
-  <nav>
-    <div class="brand">yuwen<span class="dot">.</span>dev</div>
-    <div class="links">
-      <a href="#projects">projects</a>
-      <a href="#now">now</a>
-      <a href="#contact">contact</a>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="eyebrow">available for collabs</div>
-    <h1 class="headline">Hi, I'm Yuwen<span class="cursor"></span></h1>
-    <p class="lede">
-      I turn ideas into things that actually run. Big into games — playing them, and slowly
-      working my way toward <b>making one of my own</b>. Lately down a blockchain/crypto rabbit
-      hole, mostly out of curiosity for how it all works under the hood.
-    </p>
-
-    <div class="stack-row">
-      <span class="chip">Python</span>
-      <span class="chip">JavaScript</span>
-      <span class="chip">Lua</span>
-      <span class="chip">Gemini API</span>
-      <span class="chip">Git</span>
-      <span class="chip">VS Code</span>
-    </div>
-
-    <div class="cta-row">
-      <a class="btn primary" href="#projects">See what I'm building</a>
-      <a class="btn" href="https://github.com/maLoyInc" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
+  <!-- ============================================
+       NAVIGATION
+       Responsibility: site-wide nav bar, logo mark,
+       anchor links to sections, mobile menu toggle.
+       Implemented in: js/navigation.js
+  ============================================= -->
+  <header id="navbar">
+    <!-- Nav markup will be implemented in a later stage -->
   </header>
 
-  <section id="projects">
-    <h2 class="section-title">projects</h2>
-    <div class="projects">
+  <main>
 
-      <article class="term">
-        <div class="term-bar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="path">~/projects/ai-research-agent</span>
-          <span class="status live">active</span>
-        </div>
-        <div class="term-body">
-          <h3><span class="prompt">$</span>AI Research Agent</h3>
-          <p>An agent that can search, read pages, do math, and remember stuff — built on Gemini.</p>
-          <div class="term-tags"><span>python</span><span>gemini-api</span><span>agents</span></div>
-          <a class="term-link" href="https://github.com/maLoyInc" target="_blank" rel="noopener">view on GitHub →</a>
-        </div>
-      </article>
+    <!-- ============================================
+         HERO
+         Responsibility: primary landing section —
+         greeting, name, title, intro, CTAs, socials,
+         and the 3D neuron canvas.
+         Implemented in: js/neuron.js, js/animations.js
+    ============================================= -->
+    <section id="hero" aria-label="Introduction">
+      <!-- Hero content and <canvas> mount point added in a later stage -->
+    </section>
 
-      <article class="term">
-        <div class="term-bar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="path">~/projects/untitled-roblox-game</span>
-          <span class="status wip">in progress</span>
-        </div>
-        <div class="term-body">
-          <h3><span class="prompt">$</span>Roblox Game (untitled)</h3>
-          <p>The game I keep saying I'll finish. Built in Roblox Studio — mostly Lua and way too much playtesting.</p>
-          <div class="term-tags"><span>lua</span><span>roblox-studio</span><span>game-dev</span></div>
-          <a class="term-link" href="https://github.com/maLoyInc" target="_blank" rel="noopener">follow progress →</a>
-        </div>
-      </article>
+    <!-- ============================================
+         ABOUT
+         Responsibility: short personal narrative,
+         quick facts, portrait/placeholder image.
+    ============================================= -->
+    <section id="about" aria-label="About Me">
+      <!-- About content added in a later stage -->
+    </section>
 
-      <article class="term">
-        <div class="term-bar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="path">~/projects/this-site</span>
-          <span class="status live">live</span>
-        </div>
-        <div class="term-body">
-          <h3><span class="prompt">$</span>This portfolio</h3>
-          <p>You're looking at it. A single-page static site, hosted for free on GitHub Pages.</p>
-          <div class="term-tags"><span>html</span><span>css</span><span>github-pages</span></div>
-          <a class="term-link" href="https://github.com/maLoyInc" target="_blank" rel="noopener">view source →</a>
-        </div>
-      </article>
+    <!-- ============================================
+         SKILLS
+         Responsibility: grouped competency display.
+         Data structure implemented in: js/projects.js
+         (skills data may live in its own data file later)
+    ============================================= -->
+    <section id="skills" aria-label="Skills">
+      <!-- Skills content added in a later stage -->
+    </section>
 
-    </div>
-  </section>
+    <!-- ============================================
+         PROJECTS
+         Responsibility: case-study style project cards.
+         Implemented in: js/projects.js
+    ============================================= -->
+    <section id="projects" aria-label="Projects">
+      <!-- Project cards rendered/added in a later stage -->
+    </section>
 
-  <section id="now">
-    <h2 class="section-title">what I'm messing around with</h2>
-    <ul class="now-list">
-      <li>Building out the AI Research Agent — search, math, memory, all on Gemini.</li>
-      <li>Chipping away at a Roblox game in Lua, one playtest at a time.</li>
-      <li>Poking around blockchain/crypto out of pure curiosity.</li>
-    </ul>
-  </section>
+    <!-- ============================================
+         EXPERIENCE
+         Responsibility: timeline of roles/milestones.
+    ============================================= -->
+    <section id="experience" aria-label="Experience">
+      <!-- Experience timeline added in a later stage -->
+    </section>
 
-  <footer id="contact">
-    <span>© 2026 Yuwen. Built with HTML &amp; a lot of coffee.</span>
-    <a href="https://github.com/maLoyInc" target="_blank" rel="noopener">github.com/maLoyInc ↗</a>
+    <!-- ============================================
+         SERVICES / WHAT I DO
+         Responsibility: short list of offerings.
+    ============================================= -->
+    <section id="services" aria-label="What I Do">
+      <!-- Services content added in a later stage -->
+    </section>
+
+    <!-- ============================================
+         CONTACT
+         Responsibility: direct contact CTAs.
+         CORRECTION (per approved plan update):
+         No backend-dependent form. Uses mailto/email
+         and social link CTAs only.
+         Implemented in: js/contact.js
+    ============================================= -->
+    <section id="contact" aria-label="Contact">
+      <!-- Contact CTAs added in a later stage -->
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       Responsibility: copyright, back-to-top,
+       secondary social links.
+  ============================================= -->
+  <footer id="site-footer">
+    <!-- Footer content added in a later stage -->
   </footer>
-</div>
+
+  <!--
+    THIRD-PARTY LIBRARIES (CDN)
+    Prepared per architecture stage only — not yet used.
+    No implementation logic depends on these until the
+    3D Neuron and Animation stages.
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!--
+    PROJECT SCRIPTS
+    Classic script loading (no bundler, no type="module" needed).
+    Load order: data/logic modules first, main.js last to orchestrate init.
+  -->
+  <script src="./js/navigation.js"></script>
+  <script src="./js/animations.js"></script>
+  <script src="./js/neuron.js"></script>
+  <script src="./js/projects.js"></script>
+  <script src="./js/contact.js"></script>
+  <script src="./js/main.js"></script>
 
 </body>
 </html>
